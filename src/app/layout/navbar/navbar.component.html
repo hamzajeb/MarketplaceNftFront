@@ -1,0 +1,45 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row style="justify-content: space-between;flex-direction: row">
+
+<div style="display: flex;flex-direction: row">
+        <div> DApp NFT Marketplace
+        </div>
+        <div *ngIf="account; else noContent1">
+        <ul style="display: flex;flex-direction: row;column-gap: 20px;margin: 0;">
+            <li>
+                <a [routerLink]="['/']" mat-stroked-button >Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['/createNft']" mat-stroked-button >Create</a>
+            </li>
+            <li>
+                <a [routerLink]="['/myListedItems']" mat-stroked-button >My Listed Items</a>
+            </li>
+            <li>
+                <a [routerLink]="['/myPurchases']" mat-stroked-button >My Purchases</a>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noContent1>
+        <ul style="display: flex;flex-direction: row;column-gap: 20px;margin: 0;">
+            <li>
+                <a [routerLink]="['/']" mat-stroked-button >Home</a>
+            </li>
+        </ul>
+      </ng-template>
+    </div>
+
+    <div *ngIf="account; else noContent">
+        <a   [href]='"https://etherscan.io/address/"+account'     
+        target="_blank" mat-stroked-button >{{account.slice(0, 5) + '...' + account.slice(38, 42)}}</a>
+      </div>
+      
+      <ng-template #noContent>
+        <button (click)="web3Handler()" mat-stroked-button>Connect Wallet (MetaMask)</button>
+      </ng-template>
+
+            
+
+    </mat-toolbar-row>
+  </mat-toolbar>

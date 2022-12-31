@@ -1,0 +1,30 @@
+<div *ngIf="loading; else noContent">
+  <div style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<ng-template #noContent>
+  <mat-grid-list *ngIf="items.length > 0; else noItems" cols="4" rowHeight="500px" [gutterSize]="'20px'" >
+    <mat-grid-tile  *ngFor="let item of items">
+        <mat-card class="example-card" style="    height: 320px;width:96%">
+            <mat-card-header>
+              <mat-card-title>{{item.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image style="height: 60%;" src={{item.image}} alt="Photo of a NFT">
+            <mat-card-content>
+              <p>
+                {{item.description}}
+              </p>
+            </mat-card-content>
+
+              <button (click)="buyMarketItem(item)" mat-button>Buy for {{formatEther(item.totalPrice)}} ETH</button>
+
+
+          </mat-card>
+          
+    </mat-grid-tile>
+</mat-grid-list>
+<ng-template #noItems>
+<h2>No listed assets</h2>
+</ng-template>
+</ng-template>

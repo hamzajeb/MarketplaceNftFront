@@ -1,0 +1,17 @@
+<h1 style="text-align: center;font-weight: bold;">Purchases</h1>
+<mat-grid-list *ngIf="purchases.length > 0" cols="4" rowHeight="400px" [gutterSize]="'20px'" >
+    <mat-grid-tile  *ngFor="let item of purchases">
+        <mat-card class="example-card" style="    height: 320px;width:96%">
+            <mat-card-header>
+              <mat-card-title>{{item.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image style="height: 60%;" src={{item.image}} alt="Photo of a NFT">
+            <mat-card-content>
+              <p>
+                {{item.description}}
+              </p>
+            </mat-card-content>
+
+          </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
